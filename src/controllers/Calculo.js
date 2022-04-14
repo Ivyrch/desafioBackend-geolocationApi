@@ -7,7 +7,7 @@ class Calculodistancia {
             const queries = req.query
             const queriesValues = Object.values(queries)
             
-            GoogleService.groupedCoordinates(...queriesValues).then((response) => {
+            GoogleService.cordenateAgroup(...queriesValues).then((response) => {
                 const result = Algoritmo.distanciaMaxMin(response)
                 res.status(200).json(result)
             }).catch((e)=>{

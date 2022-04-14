@@ -13,25 +13,27 @@ class Algoritmo{
         for(let i =0; i < arr.length; i++) {
             for (let j=0; j < arr.length; j++) {
                 let value = this.distanciaEuclidiana(
-                    arr[i].coordinate.lat,
-                    arr[j].coordinate.lat,
-                    arr[i].coordinate.lng,
-                    arr[j].coordinate.lng
+                    arr[i].cordenada.lat,
+                    arr[j].cordenada.lat,
+                    arr[i].cordenada.lng,
+                    arr[j].cordenada.lng
 
                 )
             
-                let percurso = new Percurso(arr[i].ApiModels.enderecos, arr[j].enderecos)
+                let percurso = new Percurso(arr[i].enderecos, arr[j].enderecos)
                 let distancia = new Distancia(percurso, value)
+                console.log(distancia)
                 list.push(distancia)
+                
             }
         }
         return list 
     }
     static ordernarDistancias(arr) {
         let order = this.distanceList(arr).sort((a,b) => {
-        if(a.distance < b.distance){
+        if(a.distancia < b.distancia){
                      return -1
-        } else if(a.distance > b.distance) {
+        } else if(a.distancia > b.distancia) {
             return 1
         } else {
             return 0
@@ -45,7 +47,7 @@ class Algoritmo{
         let ordenarDistancias = this.ordernarDistancias(arr)
         let remove = 0; 
         ordenarDistancias = ordenarDistancias.filter((item) => {
-            return item.distance !== remove
+            return item.distancia !== remove
         })
         
         let maiorDistancia = ordenarDistancias.length -1

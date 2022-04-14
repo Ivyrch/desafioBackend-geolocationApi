@@ -1,7 +1,7 @@
 export class ModelLocalizacao {
-    constructor(cordenada, endereco) {
+    constructor(cordenada, enderecos) {
         this.cordenada = cordenada,
-        this. endereco = endereco 
+        this.enderecos = enderecos
     }
 }
 
